@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="friends_app">
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script type='text/javascript' src='js/main.js'></script>
+	<title>Full MEAN</title>
+</head>
+<body ng-controller='FriendsController'>
+	<h1>Friends</h1>
+	<input type="text" ng-model='filter_name' placeholder='filter'>
+	<ul>
+		<li ng-repeat='friend in friends | filter: filter_name'>
+			{{friend.name}}, {{friend.age}}
+		</li>
+	</ul>
+	<h2>Add a Friend</h2>
+	<input type="text" ng-model='new_friend.name' placeholder='name'>
+	<input type="text" ng-model='new_friend.age' placeholder='age'>
+	<input type="submit" ng-click='addfriend()'>
+</body>
+</html>
