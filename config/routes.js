@@ -9,4 +9,8 @@ module.exports = function(app) {
 	app.post('/add_friend', function(req, res) {
 		friends.add(req, res);
 	});
+
+	app.post('/delete_friend', function(req, res) {
+		friends.destroy(req, res);
+	});
 }

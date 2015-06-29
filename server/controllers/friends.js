@@ -30,6 +30,19 @@ module.exports = (function() {
 					}
 				});
 			});
+		},
+		destroy: function(req, res) {
+			// removes the friend we chose by _id
+			Friend.remove({_id: req.body._id}, function(err, results) {
+				// queries all documents and uses callback to spit out an error, or a the results
+				Friend.find({}, function(err, results) {
+					if(err) {
+						console.log(err);
+					} else {
+						res.json(results);
+					}
+				});
+			});
 		}
 	}
 })();
