@@ -11,11 +11,16 @@ friends_app.factory('FriendFactory', function($http) {
 		});
 	}
 
-	factory.addFriend = function() {
-		FriendFactory.addFriend($scope.new_friend, function() {
-			$scope.friends = FriendFactory.getFriends();
-			$scope.new_friend = {};
+	factory.addFriend = function(friend, callback) {
+		$http.post('/add_friend').success(function(output) {
+			friends = output;
+			callback(friends);
 		});
+		
+		// FriendFactory.addFriend($scope.new_friend, function() {
+		// 	$scope.friends = FriendFactory.getFriends();
+		// 	$scope.new_friend = {};
+		// });
 	}
 	return factory;
 });
